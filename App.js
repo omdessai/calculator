@@ -35,13 +35,33 @@ const styles = StyleSheet.create({
     fontSize: 35,
   },
   buttonContainer:{
-    backgroundColor: 'grey',
     flex:1,
+    flexDirection:'row',
     borderRadius:50,
     margin:10,
+    alignItems:'center',
+    justifyContent:'space-around',
   },
   hi:{
-    flex:1,
+    margin:5,
+    backgroundColor:'white',
+    borderWidth:1,
+    borderRadius:20,
+    width:40
+
+  },
+  ans:{
+    fontSize: 25,
+  },
+  ansContainer:{
+    height: 40,
+    flexDirection:'row',
+    borderRadius:10,
+    borderWidth:2,
+    margin:25,
+    backgroundColor:'white',
+    alignItems:'center',
+    justifyContent:'space-around',
   }
 })
 
@@ -53,21 +73,35 @@ const App: () => React$Node = () => {
           <Text style={styles.title}>Calculator</Text>
         </View>
         <View style={styles.body}>
-        <View style={styles.buttonContainer}>
-          <Text>alignItems</Text>
+        <View style={styles.ansContainer}>
+          <Text style={styles.ans}>0</Text>
         </View>
 
         <View style={styles.buttonContainer}>
-        <Button title = '0' style={styles.hi}></Button>
+        <View style={styles.hi}><Button title = '0'></Button></View>
         </View>
 
         <View style={styles.buttonContainer}>
+        
+        <View style={styles.hi}><Button title = '-'></Button></View>
+        <View style={styles.hi}><Button title = '1'></Button></View>
+        <View style={styles.hi}><Button title = '4'></Button></View>
+        <View style={styles.hi}><Button title = '7'></Button></View>
+        <View style={styles.hi}><Button title = '+'></Button></View>
+
+        
         </View>
 
         <View style={styles.buttonContainer}>
+        <Button title = '/' style={styles.hi}></Button>
+        <Button title = '2' style={styles.hi}></Button>
+        <Button title = '5' style={styles.hi}></Button>
+        <Button title = '8' style={styles.hi}></Button>
+        <Button title = '*' style={styles.hi}></Button>
         </View>
 
         <View style={styles.buttonContainer}>
+
         </View>
 
         <View style={styles.buttonContainer}>
