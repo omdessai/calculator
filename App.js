@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     fontSize: 35,
   },
   buttonContainer:{
-    backgroundColor: 'green',
+    backgroundColor: 'grey',
     flex:1,
     borderRadius:50,
     margin:10,
