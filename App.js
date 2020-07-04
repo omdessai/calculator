@@ -72,23 +72,17 @@ calcButtons = [
   ['-', '1', '4', '7', '+'],
   ['/', '2', '5', '8', '*'],
   ['3', '6', '9'],
-  ['=']
+  ['=', '⌫']
 ]
-//firstRowButtons.map(Ent =>{console.log (Ent)})
+
 
 const App: () => React$Node = () => {
-  /*
-  a = ['1','2'];
-  {
-            
-            a.map((item) => (
-            <View style={styles.hi}><Button title = 'plus'></Button></View>
-            ))  
-          }
-  */
 
-  onButtonPressed = () => {
-    alert("pressed");
+  [ansText, setansText] = useState("");
+
+  onButtonPressed = (a) => {
+    setansText(ansText + a) ;
+    console.log(ansText)
   }
 
   return(
@@ -98,14 +92,14 @@ const App: () => React$Node = () => {
         </View>
         <View style={styles.body}>
         <View style={styles.ansContainer}>
-          <Text style={styles.ans}>0</Text>
+          <Text style={styles.ans}>{ansText}</Text>
         </View>
       {
         calcButtons.map(buttonArray => (
           <View style={styles.buttonContainer}>
               {
                 buttonArray.map(Ent => (
-                  <View style={styles.hi}><Button title = {Ent} onPress = {this.onButtonPressed}></Button></View>
+                  <View style={styles.hi}><Button title = {Ent} onPress = {() => this.onButtonPressed(Ent)}></Button></View>
                 ))
               }
           </View>
