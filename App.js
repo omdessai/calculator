@@ -75,14 +75,55 @@ calcButtons = [
   ['=', '⌫']
 ]
 
+num1 = "";
+num2 = "";
+symbol = "";
+
+isSymbol = (w)=> {
+  return ( w == '+' || w == '-' || w == '/' || w == '*');
+}
 
 const App: () => React$Node = () => {
 
   [ansText, setansText] = useState("");
 
   onButtonPressed = (a) => {
-    setansText(ansText + a) ;
-    console.log(ansText)
+    if(a == calcButtons [4][1]){
+      setansText(ansText.substring(0, ansText.length-1));
+    }
+    else {
+      if (isSymbol (a))
+      {
+        num1 = ansText;
+        symbol = a;
+      }
+      if (a == '='){
+        num2=ansText.substring(num1.length + 1, ansText.length);
+
+        ans = 0;
+
+        num1 = parseInt(num1);
+        num2 = parseInt(num2);
+
+        switch(symbol){
+          case '+': ans = num1 + num2;
+          break;
+          case '*': ans = num1 * num2;
+          break;
+          case '/': ans = num1 / num2;
+          break;
+          case '-': ans = num1 - num2;
+
+        }
+        console.log(ans);
+        setansText(ansText + a + ans);
+        return;
+
+      }
+      setansText(ansText + a) ;
+      console.log(ansText);
+      console.log("num1 =>" + num1 + " num2 => " + num2+ " symbol => " + symbol);
+    }
   }
 
   return(
