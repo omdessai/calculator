@@ -3,6 +3,7 @@ import {StyleSheet, View, Button, Text, Dimensions, TouchableOpacity} from 'reac
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 const styles = StyleSheet.create({
+
   Me:{
     flex:1,
     backgroundColor: 'green',
@@ -63,9 +64,32 @@ const styles = StyleSheet.create({
     alignItems:'center',
     justifyContent:'space-around',
   }
-})
+});
+
+firstRowButtons = ['-', '1', '4', '7', '+'];
+calcButtons = [
+  ['0'],
+  ['-', '1', '4', '7', '+'],
+  ['/', '2', '5', '8', '*'],
+  ['3', '6', '9'],
+  ['=']
+]
+//firstRowButtons.map(Ent =>{console.log (Ent)})
 
 const App: () => React$Node = () => {
+  /*
+  a = ['1','2'];
+  {
+            
+            a.map((item) => (
+            <View style={styles.hi}><Button title = 'plus'></Button></View>
+            ))  
+          }
+  */
+
+  onButtonPressed = () => {
+    alert("pressed");
+  }
 
   return(
     <View style={styles.Me}>
@@ -76,38 +100,17 @@ const App: () => React$Node = () => {
         <View style={styles.ansContainer}>
           <Text style={styles.ans}>0</Text>
         </View>
-
-        <View style={styles.buttonContainer}>
-        <View style={styles.hi}><Button title = '0'></Button></View>
-        </View>
-
-        <View style={styles.buttonContainer}>
-        
-        <View style={styles.hi}><Button title = '-'></Button></View>
-        <View style={styles.hi}><Button title = '1'></Button></View>
-        <View style={styles.hi}><Button title = '4'></Button></View>
-        <View style={styles.hi}><Button title = '7'></Button></View>
-        <View style={styles.hi}><Button title = '+'></Button></View>
-
-        
-        </View>
-
-        <View style={styles.buttonContainer}>
-        <Button title = '/' style={styles.hi}></Button>
-        <Button title = '2' style={styles.hi}></Button>
-        <Button title = '5' style={styles.hi}></Button>
-        <Button title = '8' style={styles.hi}></Button>
-        <Button title = '*' style={styles.hi}></Button>
-        </View>
-
-        <View style={styles.buttonContainer}>
-
-        </View>
-
-        <View style={styles.buttonContainer}>
-        </View>
-
-
+      {
+        calcButtons.map(buttonArray => (
+          <View style={styles.buttonContainer}>
+              {
+                buttonArray.map(Ent => (
+                  <View style={styles.hi}><Button title = {Ent} onPress = {this.onButtonPressed}></Button></View>
+                ))
+              }
+          </View>
+        ))
+      }
         </View>
         <View style={styles.footer}>
           <Text>App by Om Dessai</Text>
